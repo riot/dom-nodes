@@ -1,0 +1,41 @@
+{
+  "name": "riot-dom-nodes",
+  "version": "0.0.0",
+  "description": "List of all the available DOM and SVG nodes and helper functions to quickly test against them",
+  "main": "riot-dom-nodes.js",
+  "jsnext:main": "index.next.js",
+  "module": "index.next.js",
+  "scripts": {
+    "prepare": "npm run build && npm test",
+    "lint": "eslint index.next.js test.js rollup.config.js",
+    "build": "rollup -c",
+    "doc": "documentation readme index.next.js -s API",
+    "test": "npm run build && npm run lint && mocha test.js"
+  },
+  "files": [
+    "index.next.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GianlucaGuarini/riot-dom-nodes.git"
+  },
+  "keywords": [
+    "html",
+    "svg",
+    "void",
+    "dom",
+    "riot"
+  ],
+  "author": "Gianluca Guarini <gianluca.guarini@gmail.com> (http://gianlucaguarini.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GianlucaGuarini/riot-dom-nodes/issues"
+  },
+  "homepage": "https://github.com/GianlucaGuarini/riot-dom-nodes#readme",
+  "devDependencies": {
+    "eslint-config-riot": "^1.0.0",
+    "eslint": "^4.13.1",
+    "mocha": "^4.0.1",
+    "rollup": "^0.52.1"
+  }
+}

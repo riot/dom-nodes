@@ -94,8 +94,7 @@ Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global
 
 -   **See: <https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes>**
 
-Matches boolean HTML attributes in the riot tag definition.
-With a long list like this, a regex is faster than `[].indexOf` in most browsers.
+List of all boolean HTML attributes
 
 Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 

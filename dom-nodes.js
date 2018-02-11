@@ -256,8 +256,7 @@ const HTML_TAGS_LIST = [
 ].concat(VOID_HTML_TAGS_LIST).sort();
 
 /**
- * Matches boolean HTML attributes in the riot tag definition.
- * With a long list like this, a regex is faster than `[].indexOf` in most browsers.
+ * List of all boolean HTML attributes
  * @const {RegExp}
  * @see {@link https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes}
  */

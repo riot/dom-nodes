@@ -1,6 +1,6 @@
 {
   "name": "dom-nodes",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "List of all the available DOM and SVG nodes and helper functions to quickly test against them",
   "main": "dom-nodes.js",
   "jsnext:main": "index.next.js",

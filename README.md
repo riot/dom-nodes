@@ -6,6 +6,12 @@
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
 
+## Installation
+
+```bash
+$ npm i dom-nodes -S
+```
+
 ## Usage
 
 ```js
@@ -43,24 +49,31 @@ This project couldn't have been made without the projects above!
 -   [SVG_TAGS_LIST](#svg_tags_list)
 -   [VOID_HTML_TAGS_LIST](#void_html_tags_list)
 -   [HTML_TAGS_LIST](#html_tags_list)
+-   [BOOLEAN_ATTRIBUTES_LIST](#boolean_attributes_list)
 -   [HTML_TAGS_RE](#html_tags_re)
 -   [SVG_TAGS_RE](#svg_tags_re)
 -   [VOID_HTML_TAGS_RE](#void_html_tags_re)
 -   [VOID_SVG_TAGS_RE](#void_svg_tags_re)
+-   [BOOLEAN_ATTRIBUTES_RE](#boolean_attributes_re)
 -   [isVoid](#isvoid)
 -   [isHtml](#ishtml)
 -   [isSvg](#issvg)
 -   [isCustom](#iscustom)
+-   [isBoolAttribute](#isboolattribute)
 
 ### VOID_SVG_TAGS_LIST
 
 SVG void elements that cannot be auto-closed and shouldn't contain child nodes.
+
+Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### SVG_TAGS_LIST
 
 -   **See: <https://github.com/wooorm/svg-tag-names>**
 
 List of all the available svg tags
+
+Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### VOID_HTML_TAGS_LIST
 
@@ -75,21 +88,46 @@ HTML void elements that cannot be auto-closed and shouldn't contain child nodes.
 
 List of all the html tags
 
+Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+### BOOLEAN_ATTRIBUTES_LIST
+
+-   **See: [attributes.md](https://github.com/riot/compiler/blob/dev/doc/attributes.md)**
+
+Matches boolean HTML attributes in the riot tag definition.
+With a long list like this, a regex is faster than `[].indexOf` in most browsers.
+
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
 ### HTML_TAGS_RE
 
 Regex matching all the html tags ignoring the cases
+
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 ### SVG_TAGS_RE
 
 Regex matching all the svg tags ignoring the cases
 
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
 ### VOID_HTML_TAGS_RE
 
 Regex matching all the void html tags ignoring the cases
 
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
 ### VOID_SVG_TAGS_RE
 
 Regex matching all the void svg tags ignoring the cases
+
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+### BOOLEAN_ATTRIBUTES_RE
+
+Regex matching all the boolean attributes
+
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 ### isVoid
 
@@ -113,7 +151,7 @@ Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ### isHtml
 
-True if it's a HTML known tag
+True if it's a known HTML tag
 
 **Parameters**
 
@@ -132,7 +170,7 @@ Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ### isSvg
 
-True if it's a SVG known tag
+True if it's a known SVG tag
 
 **Parameters**
 
@@ -162,6 +200,23 @@ True if it's not SVG nor a HTML known tag
 ```javascript
 isCustom('my-component') // true
 isCustom('div') // false
+```
+
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+
+### isBoolAttribute
+
+True if it's a boolean attribute
+
+**Parameters**
+
+-   `attribute` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test attribute
+
+**Examples**
+
+```javascript
+isBoolAttribute('selected') // true
+isBoolAttribute('class') // false
 ```
 
 Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**

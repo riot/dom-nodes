@@ -92,7 +92,7 @@ Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global
 
 ### BOOLEAN_ATTRIBUTES_LIST
 
--   **See: [attributes.md](https://github.com/riot/compiler/blob/dev/doc/attributes.md)**
+-   **See: <https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes>**
 
 Matches boolean HTML attributes in the riot tag definition.
 With a long list like this, a regex is faster than `[].indexOf` in most browsers.
@@ -147,7 +147,7 @@ isVoid('div') // false
 isVoid('mask') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### isHtml
 
@@ -166,7 +166,7 @@ isHtml('Img') // true
 isHtml('path') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### isSvg
 
@@ -185,7 +185,7 @@ isSvg('radialgradient') // true
 isSvg('div') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### isCustom
 
@@ -202,7 +202,7 @@ isCustom('my-component') // true
 isCustom('div') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### isBoolAttribute
 
@@ -219,4 +219,4 @@ isBoolAttribute('selected') // true
 isBoolAttribute('class') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 

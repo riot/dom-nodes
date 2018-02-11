@@ -253,7 +253,7 @@ export const HTML_TAGS_LIST = [
  * Matches boolean HTML attributes in the riot tag definition.
  * With a long list like this, a regex is faster than `[].indexOf` in most browsers.
  * @const {RegExp}
- * @see [attributes.md](https://github.com/riot/compiler/blob/dev/doc/attributes.md)
+ * @see {@link https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes}
  */
 export const BOOLEAN_ATTRIBUTES_LIST = [
   'disabled',

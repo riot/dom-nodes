@@ -2,7 +2,7 @@
  * SVG void elements that cannot be auto-closed and shouldn't contain child nodes.
  * @type {Array}
  */
-export const voidSvg = [
+export const VOID_SVG_TAGS_LIST = [
   'circle',
   'ellipse',
   'line',
@@ -17,8 +17,9 @@ export const voidSvg = [
 /**
  * List of all the available svg tags
  * @type {Array}
+ * @see {@link https://github.com/wooorm/svg-tag-names}
  */
-export const svg = [
+export const SVG_TAGS_LIST = [
   'a',
   'altGlyph',
   'altGlyphDef',
@@ -111,7 +112,7 @@ export const svg = [
   'video',
   'view',
   'vkern'
-].concat(voidSvg)
+].concat(VOID_SVG_TAGS_LIST).sort()
 
 /**
  * HTML void elements that cannot be auto-closed and shouldn't contain child nodes.
@@ -119,7 +120,7 @@ export const svg = [
  * @see   {@link http://www.w3.org/TR/html-markup/syntax.html#syntax-elements}
  * @see   {@link http://www.w3.org/TR/html5/syntax.html#void-elements}
  */
-export const voidHtml = [
+export const VOID_HTML_TAGS_LIST = [
   'area',
   'base',
   'br',
@@ -141,8 +142,9 @@ export const voidHtml = [
 /**
  * List of all the html tags
  * @type {Array}
+ * @see {@link https://github.com/sindresorhus/html-tags}
  */
-export const html = [
+export const HTML_TAGS_LIST = [
   'a',
   'abbr',
   'address',
@@ -245,46 +247,109 @@ export const html = [
   'ul',
   'var',
   'video'
-].concat(voidHtml)
+].concat(VOID_HTML_TAGS_LIST).sort()
+
+/**
+ * Join a list of items with the pipe symbol (usefull for regex list concatenation)
+ * @private
+ * @param   {Array} list - list of strings
+ * @returns {String} the list received joined with pipes
+ */
+function joinWithPipe(list) {
+  return list.join('|')
+}
+
+/**
+ * Convert list of strings to regex in order to test against it ignoring the cases
+ * @private
+ * @param   {...Array} lists - array of strings
+ * @returns {RegExp} regex that will match all the strings in the array received ignoring the cases
+ */
+function listsToRegex(...lists) {
+  return new RegExp(`^/?(?:${joinWithPipe(lists.map(joinWithPipe))})$`, 'i')
+}
+
+/**
+ * Regex matching all the html tags ignoring the cases
+ * @type {RegExp}
+ */
+export const HTML_TAGS_RE = listsToRegex(HTML_TAGS_LIST)
+
+/**
+ * Regex matching all the svg tags ignoring the cases
+ * @type {RegExp}
+ */
+export const SVG_TAGS_RE = listsToRegex(SVG_TAGS_LIST)
+
+/**
+ * Regex matching all the void html tags ignoring the cases
+ * @type {RegExp}
+ */
+export const VOID_HTML_TAGS_RE =  listsToRegex(VOID_HTML_TAGS_LIST)
+
+/**
+ * Regex matching all the void svg tags ignoring the cases
+ * @type {RegExp}
+ */
+export const VOID_SVG_TAGS_RE =  listsToRegex(VOID_SVG_TAGS_LIST)
 
 /**
  * True if it's a self closing tag
  * @param   {String}  tag - test tag
  * @returns {Boolean}
+ * @example
+ * isVoid('meta') // true
+ * isVoid('circle') // true
+ * isVoid('IMG') // true
+ * isVoid('div') // false
+ * isVoid('mask') // false
  */
 export function isVoid(tag) {
   return [
-    voidHtml,
-    voidSvg
-  ].some(l => l.includes(tag))
+    VOID_HTML_TAGS_RE,
+    VOID_SVG_TAGS_RE
+  ].some(r => r.test(tag))
 }
 
 /**
  * True if it's a HTML known tag
  * @param   {String}  tag - test tag
  * @returns {Boolean}
+ * @example
+ * isHtml('img') // true
+ * isHtml('IMG') // true
+ * isHtml('Img') // true
+ * isHtml('path') // false
  */
 export function isHtml(tag) {
-  return html.includes(tag)
+  return HTML_TAGS_RE.test(tag)
 }
 
 /**
  * True if it's a SVG known tag
  * @param   {String}  tag - test tag
  * @returns {Boolean}
+ * @example
+ * isSvg('g') // true
+ * isSvg('radialGradient') // true
+ * isSvg('radialgradient') // true
+ * isSvg('div') // false
  */
 export function isSvg(tag) {
-  return svg.includes(tag)
+  return SVG_TAGS_RE.test(tag)
 }
 
 /**
  * True if it's not SVG nor a HTML known tag
  * @param   {String}  tag - test tag
  * @returns {Boolean}
+ * @example
+ * isCustom('my-component') // true
+ * isCustom('div') // false
  */
 export function isCustom(tag) {
   return [
-    html,
-    svg
-  ].every(l => !l.includes(tag))
+    HTML_TAGS_RE,
+    SVG_TAGS_RE
+  ].every(l => !l.test(tag))
 }

@@ -4,7 +4,7 @@ export default {
   name: 'domNodes',
   output: [
     {
-      file: 'riot-dom-nodes.js',
+      file: 'dom-nodes.js',
       format: 'umd'
     }
   ]

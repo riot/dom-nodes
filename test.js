@@ -1,13 +1,13 @@
 const assert = require('assert')
-const { voidSvg, voidHtml, html, svg, isVoid, isHtml, isSvg, isCustom} = require('./')
+const {VOID_SVG_TAGS_LIST, VOID_HTML_TAGS_LIST, HTML_TAGS_LIST, SVG_TAGS_LIST, isVoid, isHtml, isSvg, isCustom} = require('./')
 
-describe('riot-dom-nodes', function() {
+describe('dom-nodes', function() {
   describe('Lists', () => {
     it('All the list are properly exported', () => {
-      assert(Array.isArray(voidSvg), 'void svg tags are arrays')
-      assert(Array.isArray(voidHtml), 'void html tags are arrays')
-      assert(Array.isArray(html), 'html tags are arrays')
-      assert(Array.isArray(svg), 'svg tags are arrays')
+      assert(Array.isArray(VOID_SVG_TAGS_LIST), 'void svg tags are arrays')
+      assert(Array.isArray(VOID_HTML_TAGS_LIST), 'void html tags are arrays')
+      assert(Array.isArray(HTML_TAGS_LIST), 'html tags are arrays')
+      assert(Array.isArray(SVG_TAGS_LIST), 'svg tags are arrays')
     })
   })
 
@@ -15,6 +15,8 @@ describe('riot-dom-nodes', function() {
     it('isVoid()', () => {
       assert(isVoid('img'))
       assert(isVoid('circle'))
+      assert(isVoid('IMG'))
+      assert(isVoid('Img'))
       assert(!isVoid('g'))
       assert(!isVoid('div'))
     })
@@ -22,6 +24,8 @@ describe('riot-dom-nodes', function() {
     it('isHtml()', () => {
       assert(isHtml('img'))
       assert(isHtml('div'))
+      assert(isHtml('DIV'))
+      assert(isHtml('Div'))
       assert(!isHtml('circle'))
       assert(!isHtml('bar'))
     })
@@ -29,6 +33,9 @@ describe('riot-dom-nodes', function() {
     it('isSvg()', () => {
       assert(isSvg('g'))
       assert(isSvg('circle'))
+      assert(isSvg('Circle'))
+      assert(isSvg('radialGradient'))
+      assert(isSvg('radialgradient'))
       assert(!isSvg('div'))
       assert(!isSvg('img'))
     })
@@ -36,7 +43,9 @@ describe('riot-dom-nodes', function() {
     it('isCustom()', () => {
       assert(isCustom('user'))
       assert(isCustom('my-component'))
+      assert(isCustom('my-Component'))
       assert(!isCustom('div'))
+      assert(!isCustom('Div'))
       assert(!isCustom('circle'))
     })
   })

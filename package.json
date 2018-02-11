@@ -1,8 +1,8 @@
 {
-  "name": "riot-dom-nodes",
+  "name": "dom-nodes",
   "version": "0.0.0",
   "description": "List of all the available DOM and SVG nodes and helper functions to quickly test against them",
-  "main": "riot-dom-nodes.js",
+  "main": "dom-nodes.js",
   "jsnext:main": "index.next.js",
   "module": "index.next.js",
   "scripts": {
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GianlucaGuarini/riot-dom-nodes.git"
+    "url": "git+https://github.com/riot/dom-nodes.git"
   },
   "keywords": [
     "html",
@@ -29,9 +29,9 @@
   "author": "Gianluca Guarini <gianluca.guarini@gmail.com> (http://gianlucaguarini.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GianlucaGuarini/riot-dom-nodes/issues"
+    "url": "https://github.com/riot/dom-nodes/issues"
   },
-  "homepage": "https://github.com/GianlucaGuarini/riot-dom-nodes#readme",
+  "homepage": "https://github.com/riot/dom-nodes#readme",
   "devDependencies": {
     "eslint-config-riot": "^1.0.0",
     "eslint": "^4.13.1",

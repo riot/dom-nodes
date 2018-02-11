@@ -1,5 +1,15 @@
 const assert = require('assert')
-const {VOID_SVG_TAGS_LIST, VOID_HTML_TAGS_LIST, HTML_TAGS_LIST, SVG_TAGS_LIST, isVoid, isHtml, isSvg, isCustom} = require('./')
+const {
+  VOID_SVG_TAGS_LIST,
+  VOID_HTML_TAGS_LIST,
+  HTML_TAGS_LIST,
+  SVG_TAGS_LIST,
+  isVoid,
+  isHtml,
+  isSvg,
+  isCustom,
+  isBoolAttribute
+} = require('./')
 
 describe('dom-nodes', function() {
   describe('Lists', () => {
@@ -47,6 +57,15 @@ describe('dom-nodes', function() {
       assert(!isCustom('div'))
       assert(!isCustom('Div'))
       assert(!isCustom('circle'))
+    })
+
+    it('isBoolAttribute()', () => {
+      assert(isBoolAttribute('selected'))
+      assert(isBoolAttribute('autofocus'))
+      assert(isBoolAttribute('loop'))
+      assert(!isBoolAttribute('class'))
+      assert(!isBoolAttribute('id'))
+      assert(!isBoolAttribute('src'))
     })
   })
 })

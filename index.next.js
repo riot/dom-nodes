@@ -1,6 +1,6 @@
 /**
  * SVG void elements that cannot be auto-closed and shouldn't contain child nodes.
- * @type {Array}
+ * @const {Array}
  */
 export const VOID_SVG_TAGS_LIST = [
   'circle',
@@ -16,7 +16,7 @@ export const VOID_SVG_TAGS_LIST = [
 
 /**
  * List of all the available svg tags
- * @type {Array}
+ * @const {Array}
  * @see {@link https://github.com/wooorm/svg-tag-names}
  */
 export const SVG_TAGS_LIST = [
@@ -141,7 +141,7 @@ export const VOID_HTML_TAGS_LIST = [
 
 /**
  * List of all the html tags
- * @type {Array}
+ * @const {Array}
  * @see {@link https://github.com/sindresorhus/html-tags}
  */
 export const HTML_TAGS_LIST = [
@@ -250,6 +250,44 @@ export const HTML_TAGS_LIST = [
 ].concat(VOID_HTML_TAGS_LIST).sort()
 
 /**
+ * Matches boolean HTML attributes in the riot tag definition.
+ * With a long list like this, a regex is faster than `[].indexOf` in most browsers.
+ * @const {RegExp}
+ * @see [attributes.md](https://github.com/riot/compiler/blob/dev/doc/attributes.md)
+ */
+export const BOOLEAN_ATTRIBUTES_LIST = [
+  'disabled',
+  'visible',
+  'checked',
+  'readonly',
+  'required',
+  'allowfullscreen',
+  'autofocus',
+  'autoplay',
+  'compact',
+  'controls',
+  'default',
+  'formnovalidate',
+  'hidden',
+  'ismap',
+  'itemscope',
+  'loop',
+  'multiple',
+  'muted',
+  'noresize',
+  'noshade',
+  'novalidate',
+  'nowrap',
+  'open',
+  'reversed',
+  'seamless',
+  'selected',
+  'sortable',
+  'truespeed',
+  'typemustmatch'
+]
+
+/**
  * Join a list of items with the pipe symbol (usefull for regex list concatenation)
  * @private
  * @param   {Array} list - list of strings
@@ -271,27 +309,33 @@ function listsToRegex(...lists) {
 
 /**
  * Regex matching all the html tags ignoring the cases
- * @type {RegExp}
+ * @const {RegExp}
  */
 export const HTML_TAGS_RE = listsToRegex(HTML_TAGS_LIST)
 
 /**
  * Regex matching all the svg tags ignoring the cases
- * @type {RegExp}
+ * @const {RegExp}
  */
 export const SVG_TAGS_RE = listsToRegex(SVG_TAGS_LIST)
 
 /**
  * Regex matching all the void html tags ignoring the cases
- * @type {RegExp}
+ * @const {RegExp}
  */
 export const VOID_HTML_TAGS_RE =  listsToRegex(VOID_HTML_TAGS_LIST)
 
 /**
  * Regex matching all the void svg tags ignoring the cases
- * @type {RegExp}
+ * @const {RegExp}
  */
 export const VOID_SVG_TAGS_RE =  listsToRegex(VOID_SVG_TAGS_LIST)
+
+/**
+ * Regex matching all the boolean attributes
+ * @const {RegExp}
+ */
+export const BOOLEAN_ATTRIBUTES_RE =  listsToRegex(BOOLEAN_ATTRIBUTES_LIST)
 
 /**
  * True if it's a self closing tag
@@ -312,7 +356,7 @@ export function isVoid(tag) {
 }
 
 /**
- * True if it's a HTML known tag
+ * True if it's a known HTML tag
  * @param   {String}  tag - test tag
  * @returns {Boolean}
  * @example
@@ -326,7 +370,7 @@ export function isHtml(tag) {
 }
 
 /**
- * True if it's a SVG known tag
+ * True if it's a known SVG tag
  * @param   {String}  tag - test tag
  * @returns {Boolean}
  * @example
@@ -352,4 +396,16 @@ export function isCustom(tag) {
     HTML_TAGS_RE,
     SVG_TAGS_RE
   ].every(l => !l.test(tag))
+}
+
+/**
+ * True if it's a boolean attribute
+ * @param   {String} attribute - test attribute
+ * @returns {Boolean}
+ * @example
+ * isBoolAttribute('selected') // true
+ * isBoolAttribute('class') // false
+ */
+export function isBoolAttribute(attribute) {
+  return BOOLEAN_ATTRIBUTES_RE.test(attribute)
 }

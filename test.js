@@ -69,7 +69,7 @@ describe('dom-nodes', function() {
       assert(!isBoolAttribute('src'))
     })
 
-    it('hasValueAttribute', () => {
+    it('hasValueAttribute()', () => {
       assert(hasValueAttribute('input'))
       assert(hasValueAttribute('meter'))
       assert(hasValueAttribute('progress'))

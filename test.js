@@ -71,8 +71,9 @@ describe('dom-nodes', function() {
 
     it('hasValueAttribute()', () => {
       assert(hasValueAttribute('input'))
-      assert(hasValueAttribute('textarea'))
-      assert(hasValueAttribute('select'))
+      assert(hasValueAttribute('progress'))
+      assert(!hasValueAttribute('textarea'))
+      assert(!hasValueAttribute('select'))
       assert(!hasValueAttribute('div'))
       assert(!hasValueAttribute('ul'))
     })

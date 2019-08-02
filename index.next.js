@@ -33,6 +33,16 @@ export const HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST = [
 ]
 
 /**
+ * List of html elements having defaultValue property
+ * @type {Array}
+ */
+export const HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_LIST = [
+  'input',
+  'textarea',
+  'output'
+]
+
+/**
  * List of all the available svg tags
  * @const {Array}
  * @see {@link https://github.com/wooorm/svg-tag-names}
@@ -352,6 +362,12 @@ export const VOID_SVG_TAGS_RE =  listsToRegex(VOID_SVG_TAGS_LIST)
 export const HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE = listsToRegex(HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST)
 
 /**
+ * Regex matching all the html elements that have `defaultValue` property
+ * @const {RegExp}
+ */
+export const HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_RE = listsToRegex(HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_LIST)
+
+/**
  * Regex matching all the boolean attributes
  * @const {RegExp}
  */
@@ -428,6 +444,18 @@ export function isCustom(tag) {
  */
 export function hasValueAttribute(tag) {
   return HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE.test(tag)
+}
+
+/**
+ * True if the given tag has `defaultValue` property
+ * @param   {string}  tag - test tag
+ * @returns {boolean} true if has `defaultValue` property
+ * @example
+ * hasDefaultValueProperty('input') // true
+ * hasDefaultValueProperty('progress') // false
+ */
+export function hasDefaultValueProperty(tag) {
+  return HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_RE.test(tag)
 }
 
 /**

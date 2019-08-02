@@ -9,7 +9,8 @@ const {
   isSvg,
   isCustom,
   isBoolAttribute,
-  hasValueAttribute
+  hasValueAttribute,
+  hasDefaultValueProperty
 } = require('./')
 
 describe('dom-nodes', function() {
@@ -76,6 +77,13 @@ describe('dom-nodes', function() {
       assert(!hasValueAttribute('select'))
       assert(!hasValueAttribute('div'))
       assert(!hasValueAttribute('ul'))
+    })
+
+    it('hasDefaultValueProperty()', () => {
+      assert(hasDefaultValueProperty('input'))
+      assert(hasDefaultValueProperty('textarea'))
+      assert(hasDefaultValueProperty('output'))
+      assert(!hasDefaultValueProperty('progress'))
     })
   })
 })

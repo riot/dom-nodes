@@ -31,10 +31,21 @@
     'button',
     'data',
     'input',
-    'select',
+    'li',
+    'meter',
     'option',
-    'output',
-    'textarea'
+    'progress',
+    'param'
+  ];
+
+  /**
+   * List of html elements having defaultValue property
+   * @type {Array}
+   */
+  const HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_LIST = [
+    'input',
+    'textarea',
+    'output'
   ];
 
   /**
@@ -215,23 +226,20 @@
     'kbd',
     'label',
     'legend',
-    'li',
     'main',
     'map',
     'mark',
     'math',
     'menu',
-    'meter',
     'nav',
     'noscript',
     'object',
     'ol',
     'optgroup',
+    'output',
     'p',
-    'param',
     'picture',
     'pre',
-    'progress',
     'q',
     'rb',
     'rp',
@@ -242,6 +250,7 @@
     'samp',
     'script',
     'section',
+    'select',
     'slot',
     'small',
     'span',
@@ -255,6 +264,7 @@
     'tbody',
     'td',
     'template',
+    'textarea',
     'tfoot',
     'th',
     'thead',
@@ -358,6 +368,12 @@
   const HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE = listsToRegex(HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST);
 
   /**
+   * Regex matching all the html elements that have `defaultValue` property
+   * @const {RegExp}
+   */
+  const HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_RE = listsToRegex(HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_LIST);
+
+  /**
    * Regex matching all the boolean attributes
    * @const {RegExp}
    */
@@ -437,6 +453,18 @@
   }
 
   /**
+   * True if the given tag has `defaultValue` property
+   * @param   {string}  tag - test tag
+   * @returns {boolean} true if has `defaultValue` property
+   * @example
+   * hasDefaultValueProperty('input') // true
+   * hasDefaultValueProperty('progress') // false
+   */
+  function hasDefaultValueProperty(tag) {
+    return HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_RE.test(tag)
+  }
+
+  /**
    * True if it's a boolean attribute
    * @param   {string} attribute - test attribute
    * @returns {boolean} true if the attribute is a boolean type
@@ -450,6 +478,8 @@
 
   exports.BOOLEAN_ATTRIBUTES_LIST = BOOLEAN_ATTRIBUTES_LIST;
   exports.BOOLEAN_ATTRIBUTES_RE = BOOLEAN_ATTRIBUTES_RE;
+  exports.HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_LIST = HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_LIST;
+  exports.HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_RE = HTML_ELEMENTS_HAVING_DEFAULT_VALUE_PROPERTY_RE;
   exports.HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST = HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST;
   exports.HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE = HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE;
   exports.HTML_TAGS_LIST = HTML_TAGS_LIST;
@@ -460,6 +490,7 @@
   exports.VOID_HTML_TAGS_RE = VOID_HTML_TAGS_RE;
   exports.VOID_SVG_TAGS_LIST = VOID_SVG_TAGS_LIST;
   exports.VOID_SVG_TAGS_RE = VOID_SVG_TAGS_RE;
+  exports.hasDefaultValueProperty = hasDefaultValueProperty;
   exports.hasValueAttribute = hasValueAttribute;
   exports.isBoolAttribute = isBoolAttribute;
   exports.isCustom = isCustom;

@@ -28,7 +28,9 @@ export const HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST = [
   'li',
   'meter',
   'option',
+  'output',
   'progress',
+  'textarea',
   'param'
 ]
 
@@ -220,7 +222,6 @@ export const HTML_TAGS_LIST = uniq([
   'object',
   'ol',
   'optgroup',
-  'output',
   'p',
   'picture',
   'pre',
@@ -248,7 +249,6 @@ export const HTML_TAGS_LIST = uniq([
   'tbody',
   'td',
   'template',
-  'textarea',
   'tfoot',
   'th',
   'thead',

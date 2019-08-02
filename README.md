@@ -46,6 +46,7 @@ This project couldn't have been made without the projects above!
 #### Table of Contents
 
 -   [VOID_SVG_TAGS_LIST](#void_svg_tags_list)
+-   [HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST](#html_elements_having_value_attribute_list)
 -   [SVG_TAGS_LIST](#svg_tags_list)
 -   [VOID_HTML_TAGS_LIST](#void_html_tags_list)
 -   [HTML_TAGS_LIST](#html_tags_list)
@@ -54,16 +55,36 @@ This project couldn't have been made without the projects above!
 -   [SVG_TAGS_RE](#svg_tags_re)
 -   [VOID_HTML_TAGS_RE](#void_html_tags_re)
 -   [VOID_SVG_TAGS_RE](#void_svg_tags_re)
+-   [HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE](#html_elements_having_value_attribute_re)
 -   [BOOLEAN_ATTRIBUTES_RE](#boolean_attributes_re)
 -   [isVoid](#isvoid)
+    -   [Parameters](#parameters)
+    -   [Examples](#examples)
 -   [isHtml](#ishtml)
+    -   [Parameters](#parameters-1)
+    -   [Examples](#examples-1)
 -   [isSvg](#issvg)
+    -   [Parameters](#parameters-2)
+    -   [Examples](#examples-2)
 -   [isCustom](#iscustom)
+    -   [Parameters](#parameters-3)
+    -   [Examples](#examples-3)
+-   [hasValueAttribute](#hasvalueattribute)
+    -   [Parameters](#parameters-4)
+    -   [Examples](#examples-4)
 -   [isBoolAttribute](#isboolattribute)
+    -   [Parameters](#parameters-5)
+    -   [Examples](#examples-5)
 
 ### VOID_SVG_TAGS_LIST
 
 SVG void elements that cannot be auto-closed and shouldn't contain child nodes.
+
+Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+### HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_LIST
+
+List of html elements where the value attribute is allowed
 
 Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
@@ -81,6 +102,8 @@ Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global
 -   **See: <http://www.w3.org/TR/html5/syntax.html#void-elements>**
 
 HTML void elements that cannot be auto-closed and shouldn't contain child nodes.
+
+Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### HTML_TAGS_LIST
 
@@ -122,6 +145,12 @@ Regex matching all the void svg tags ignoring the cases
 
 Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
+### HTML_ELEMENTS_HAVING_VALUE_ATTRIBUTE_RE
+
+Regex matching all the html tags where the value tag is allowed
+
+Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
 ### BOOLEAN_ATTRIBUTES_RE
 
 Regex matching all the boolean attributes
@@ -132,11 +161,11 @@ Type: [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 True if it's a self closing tag
 
-**Parameters**
+#### Parameters
 
--   `tag` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
+-   `tag` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
 
-**Examples**
+#### Examples
 
 ```javascript
 isVoid('meta') // true
@@ -146,17 +175,17 @@ isVoid('div') // false
 isVoid('mask') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if void
 
 ### isHtml
 
 True if it's a known HTML tag
 
-**Parameters**
+#### Parameters
 
--   `tag` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
+-   `tag` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
 
-**Examples**
+#### Examples
 
 ```javascript
 isHtml('img') // true
@@ -165,17 +194,17 @@ isHtml('Img') // true
 isHtml('path') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if html tag
 
 ### isSvg
 
 True if it's a known SVG tag
 
-**Parameters**
+#### Parameters
 
--   `tag` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
+-   `tag` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
 
-**Examples**
+#### Examples
 
 ```javascript
 isSvg('g') // true
@@ -184,38 +213,55 @@ isSvg('radialgradient') // true
 isSvg('div') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if svg tag
 
 ### isCustom
 
 True if it's not SVG nor a HTML known tag
 
-**Parameters**
+#### Parameters
 
--   `tag` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
+-   `tag` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
 
-**Examples**
+#### Examples
 
 ```javascript
 isCustom('my-component') // true
 isCustom('div') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if custom element
+
+### hasValueAttribute
+
+True if the value attribute is allowed on this tag
+
+#### Parameters
+
+-   `tag` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test tag
+
+#### Examples
+
+```javascript
+hasValueAttribute('input') // true
+hasValueAttribute('div') // false
+```
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if the value attribute is allowed
 
 ### isBoolAttribute
 
 True if it's a boolean attribute
 
-**Parameters**
+#### Parameters
 
--   `attribute` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test attribute
+-   `attribute` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** test attribute
 
-**Examples**
+#### Examples
 
 ```javascript
 isBoolAttribute('selected') // true
 isBoolAttribute('class') // false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if the attribute is a boolean type

@@ -8,7 +8,8 @@ const {
   isHtml,
   isSvg,
   isCustom,
-  isBoolAttribute
+  isBoolAttribute,
+  hasValueAttribute
 } = require('./')
 
 describe('dom-nodes', function() {
@@ -66,6 +67,14 @@ describe('dom-nodes', function() {
       assert(!isBoolAttribute('class'))
       assert(!isBoolAttribute('id'))
       assert(!isBoolAttribute('src'))
+    })
+
+    it('hasValueAttribute', () => {
+      assert(hasValueAttribute('input'))
+      assert(hasValueAttribute('meter'))
+      assert(hasValueAttribute('progress'))
+      assert(!hasValueAttribute('div'))
+      assert(!hasValueAttribute('ul'))
     })
   })
 })

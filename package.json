@@ -34,8 +34,8 @@
   "homepage": "https://github.com/riot/dom-nodes#readme",
   "devDependencies": {
     "eslint-config-riot": "^3.0.0",
-    "eslint": "^6.1.0",
-    "mocha": "^6.2.0",
+    "eslint": "^9.39.1",
+    "mocha": "^11.7.5",
     "rollup": "^1.18.0"
   }
 }
